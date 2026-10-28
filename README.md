@@ -1,6 +1,6 @@
-Документація українською мовою доступна [за посиланням](https://github.com/lis-dev/nova-poshta-api-2/blob/master/README.ua.md)
+Форк для исправления ошибок на свежих версиях PHP.
 
-[![Build Status](https://travis-ci.com/lis-dev/nova-poshta-api-2.svg?branch=master)](https://travis-ci.com/lis-dev/nova-poshta-api-2)
+Документація українською мовою доступна [за посиланням](https://github.com/lis-dev/nova-poshta-api-2/blob/master/README.ua.md)
 
 # Nova Poshta API 2.0
 Класс предоставляет доступ к функциям API 2.0 службы доставки Новая Почта
