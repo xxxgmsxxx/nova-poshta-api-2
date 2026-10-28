@@ -2,7 +2,7 @@
     "name": "lis-dev/nova-poshta-api-2",
     "description": "PHP class for API 2.0 ukrainian delivery company \"Nova Poshta\"",
     "keywords": ["delivery", "delivery service", "nova poshta", "nova poshta api"],
-    "homepage": "https://github.com/lis-dev/",
+    "homepage": "https://github.com/xxxgmsxxx",
     "license": "MIT",
     "authors": [
         {
@@ -14,10 +14,18 @@
             "name": "Team",
             "homepage": "https://github.com/lis-dev/nova-poshta-api-2/graphs/contributors",
             "role": "Contributors"
+        },
+        {
+            "name": "Mikhaylo Hrivin",
+            "homepage": "https://github.com/xxxgmsxxx/nova-poshta-api-2",
+            "role": "Developer"
         }
     ],
     "require": {
-        "php": ">=5.3.0"
+        "php": ">=8.1.0",
+        "ext-curl": "*",
+        "ext-mbstring": "*",
+        "ext-simplexml": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.4"

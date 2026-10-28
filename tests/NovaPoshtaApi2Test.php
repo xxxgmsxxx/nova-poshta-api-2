@@ -36,7 +36,7 @@ class NovaPoshtaApi2Test extends \PHPUnit_Framework_TestCase
     /**
      * Set up before class.
      */
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         // Disable notices
         error_reporting(E_ALL ^ E_NOTICE);
@@ -46,7 +46,7 @@ class NovaPoshtaApi2Test extends \PHPUnit_Framework_TestCase
     /**
      * Set up before each test.
      */
-    public function setUp()
+    public function setUp(): void
     {
         // Create new instance
         $this->np = new NovaPoshtaApi2(self::$key);
@@ -143,7 +143,7 @@ class NovaPoshtaApi2Test extends \PHPUnit_Framework_TestCase
     /**
      * Data provider for testGetCities.
      */
-    public function getCitiesData()
+    public function getCitiesData(): array
     {
         return array(
             array(0, 'Киев', ''),
@@ -184,6 +184,7 @@ class NovaPoshtaApi2Test extends \PHPUnit_Framework_TestCase
      * Get Areas.
      *
      * @dataProvider getAreaData
+     * @throws \Exception
      */
     public function testGetArea($areaName, $areaRef)
     {
@@ -194,7 +195,7 @@ class NovaPoshtaApi2Test extends \PHPUnit_Framework_TestCase
     /**
      * Data provider for testGetArea.
      */
-    public function getAreaData()
+    public function getAreaData(): array
     {
         return array(
             array('Киев', ''),
@@ -211,10 +212,11 @@ class NovaPoshtaApi2Test extends \PHPUnit_Framework_TestCase
 
     /**
      * Get empty getArea.
+     * @throws \Exception
      */
     public function testGetAreaEmpty()
     {
-        $result = $this->np->getArea('', '');
+        $result = $this->np->getArea();
         $this->assertFalse($result['success']);
     }
 
@@ -231,6 +233,7 @@ class NovaPoshtaApi2Test extends \PHPUnit_Framework_TestCase
      * getCity().
      *
      * @dataProvider getCityData
+     * @throws \Exception
      */
     public function testGetCity($cityName, $regionName)
     {
@@ -241,7 +244,7 @@ class NovaPoshtaApi2Test extends \PHPUnit_Framework_TestCase
     /**
      * Data provider for testGetCity.
      */
-    public function getCityData()
+    public function getCityData(): array
     {
         return array(
             array('Андреевка', 'Запорожье'),
@@ -274,7 +277,7 @@ class NovaPoshtaApi2Test extends \PHPUnit_Framework_TestCase
     /**
      * Data provider for testGetCommon, returns list of method.
      */
-    public function getCommonData()
+    public function getCommonData(): array
     {
         return array(
             array('getTypesOfCounterparties'),
@@ -440,7 +443,7 @@ class NovaPoshtaApi2Test extends \PHPUnit_Framework_TestCase
     /**
      * Data for testGetCounterparties().
      */
-    public function getCounterpartiesData()
+    public function getCounterpartiesData(): array
     {
         return array(
             array('Sender', '', '', ''),
@@ -533,6 +536,7 @@ class NovaPoshtaApi2Test extends \PHPUnit_Framework_TestCase
 
     /**
      * Get the warehouse by city id and description.
+     * @throws \Exception
      */
     public function testGetWarehouseManyInCity()
     {
@@ -543,6 +547,7 @@ class NovaPoshtaApi2Test extends \PHPUnit_Framework_TestCase
 
     /**
      * Get the warehouse by city id and description.
+     * @throws \Exception
      */
     public function testGetWarehouseOneInCity()
     {
@@ -618,8 +623,11 @@ class NovaPoshtaApi2Test extends \PHPUnit_Framework_TestCase
      *
      * @param array $sender Required sender info
      * @depends testNewInternetDocumentGetSender
+     * @throws \Exception
+     * @throws \Exception
+     * @throws \Exception
      */
-    public function testNewInternetDocument($sender)
+    public function testNewInternetDocument(array $sender)
     {
         $result = $this->np->newInternetDocument(
             array(
@@ -701,6 +709,9 @@ class NovaPoshtaApi2Test extends \PHPUnit_Framework_TestCase
         $this->assertTrue($result['success']);
     }
 
+    /**
+     * @return void
+     */
     public function testPrintMarkings()
     {
         /*
@@ -713,6 +724,9 @@ class NovaPoshtaApi2Test extends \PHPUnit_Framework_TestCase
         $this->assertEquals('20000202552', $result['errorCodes'][0]);
     }
 
+    /**
+     * @return void
+     */
     public function testPrintMarkingsGetLink()
     {
         /*
